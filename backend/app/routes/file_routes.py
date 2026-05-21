@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 import os
+import pandas as pd
 from app.services.file_service import FileService
 
 bp = Blueprint('files', __name__, url_prefix='/api/files')
@@ -103,11 +104,14 @@ def preview_file():
         # Detect columns
         detected_columns = ExcelProcessor.detect_columns(df)
         
+        # Replace NaN with None for valid JSON serialization
+        preview_df = df.head(5).where(pd.notnull(df.head(5)), None)
+        
         # Return preview data
         return jsonify({
             'columns': list(df.columns),
             'detected_mapping': detected_columns,
-            'sample_rows': df.head(5).to_dict('records'),
+            'sample_rows': preview_df.to_dict('records'),
             'total_rows': len(df)
         }), 200
     

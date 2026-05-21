@@ -19,10 +19,16 @@ function FileUpload({ onUploadSuccess }) {
     try {
       setLoading(true);
       const response = await fileAPI.preview(selectedFile);
-      setPreview(response.data);
-      setColumnMapping(response.data.detected_mapping);
+      if (response.data && response.data.columns) {
+        setPreview(response.data);
+        setColumnMapping(response.data.detected_mapping);
+      } else {
+        setPreview(null);
+        setError('Invalid preview response from server');
+      }
     } catch (err) {
-      setError('Failed to preview file: ' + err.message);
+      setPreview(null);
+      setError('Failed to preview file: ' + (err.response?.data?.error || err.message));
     } finally {
       setLoading(false);
     }
@@ -72,7 +78,7 @@ function FileUpload({ onUploadSuccess }) {
 
       {error && <div className="error-message">{error}</div>}
 
-      {preview && (
+      {preview && preview.columns && (
         <div className="preview-section">
           <h3>📋 Column Mapping</h3>
           <p>Total rows: {preview.total_rows}</p>
@@ -87,7 +93,7 @@ function FileUpload({ onUploadSuccess }) {
                     onChange={(e) => handleColumnMappingChange(field, e.target.value)}
                   >
                     <option value="">Auto-detect</option>
-                    {preview.columns.map((col) => (
+                    {(preview.columns || []).map((col) => (
                       <option key={col} value={col}>
                         {col}
                       </option>
@@ -100,7 +106,7 @@ function FileUpload({ onUploadSuccess }) {
 
           <div className="sample-data">
             <h4>Sample Data</h4>
-            <pre>{JSON.stringify(preview.sample_rows, null, 2)}</pre>
+            <pre>{JSON.stringify(preview.sample_rows || [], null, 2)}</pre>
           </div>
         </div>
       )}
