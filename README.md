@@ -4,37 +4,37 @@ A comprehensive AI-powered system for analyzing financial data, detecting late p
 
 ## Features
 
-### 📊 Dashboard Analytics
+###  Dashboard Analytics
 - **Summary Statistics**: Total invoices, paid amounts, overdue amounts, collection rates
 - **Payment Trends**: Monthly revenue tracking and collection rate analysis
 - **Real-time Charts**: Line and bar charts for visual insights
 - **Risk Scoring**: AI-powered customer risk assessment based on payment behavior
 
-### ⏰ Late Payment Detection
+###  Late Payment Detection
 - Automatic identification of overdue payments
 - Days late calculation
 - Customer payment history tracking
 - Risk score per customer
 
-### 📈 Trend Analysis
+###  Trend Analysis
 - Monthly payment flow tracking
 - Collection rate trends
 - Late payment frequency analysis
 - Revenue patterns
 
-### 👥 Customer Behavior
+###  Customer Behavior
 - Late payer identification
 - High-value customer tracking
 - Payment consistency analysis
 - Frequency of delayed payments
 
-### 🔔 Smart Notifications
+###  Smart Notifications
 - Local alerts for high-value overdue invoices
 - Frequent late payer warnings
 - Revenue drop notifications
 - Collection rate alerts
 
-### 📤 File Management
+###  File Management
 - Excel file upload (.xlsx, .xls)
 - Auto column detection
 - Manual column mapping
@@ -232,18 +232,18 @@ Range: 0-100
 
 ## Features Implemented
 
-✅ Excel file upload and processing  
-✅ Auto column detection  
-✅ Manual column mapping  
-✅ Late payment detection  
-✅ Payment trend analysis  
-✅ Customer behavior analysis  
-✅ Risk scoring system  
-✅ Dashboard with charts  
-✅ Notifications & insights  
-✅ SQLite database  
-✅ Offline functionality  
-✅ Responsive design  
+ Excel file upload and processing  
+ Auto column detection  
+ Manual column mapping  
+ Late payment detection  
+ Payment trend analysis  
+ Customer behavior analysis  
+ Risk scoring system  
+ Dashboard with charts  
+ Notifications & insights  
+ SQLite database  
+ Offline functionality  
+ Responsive design  
 
 ## Configuration
 
@@ -325,7 +325,5 @@ For issues or questions:
 3. Check browser console for error messages
 4. Review backend logs for detailed errors
 
----
 
-**Built with ❤️ for better financial insights**
 
